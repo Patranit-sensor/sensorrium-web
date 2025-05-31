@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENSORRIUM CO., LTD. - เครื่องมือและอุปกรณ์วิทยาศาสตร์</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #4a0e4e 0%, #6b2c70 50%, #8e44ad 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(74, 14, 78, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffffff, #e8d5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4a0e4e 0%, #6b2c70 50%, #8e44ad 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #4a0e4e;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+            background: #f8f9ff;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #4a0e4e;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #4a0e4e, #8e44ad);
+            border-radius: 2px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(74, 14, 78, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4a0e4e, #8e44ad);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(74, 14, 78, 0.2);
+            border-color: #8e44ad;
+        }
+
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4a0e4e, #8e44ad);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .product-card h3 {
+            color: #4a0e4e;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: #4a0e4e;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #4a0e4e, #8e44ad);
+            border-radius: 20px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="30" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="25" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="60" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="70" r="3" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 0;
+            background: #4a0e4e;
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+        }
+
+        .contact-item i {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            width: 25px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c0a2e;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #8e44ad;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Floating elements animation */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">SENSORRIUM</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">หน้าแรก</a></li>
+                        <li><a href="#products">สินค้า</a></li>
+                        <li><a href="#about">เกี่ยวกับเรา</a></li>
+                        <li><a href="#contact">ติดต่อ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>SENSORRIUM CO., LTD.</h1>
+                <p>ผู้จำหน่ายเครื่องมือและอุปกรณ์วิทยาศาสตร์ชั้นนำ<br>คุณภาพสูง เทคโนโลยีล้ำสมัย</p>
+                <a href="#products" class="cta-button">ดูสินค้าของเรา</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">สินค้าและบริการ</h2>
+            <div class="product-grid">
+                <div class="product-card floating">
+                    <div class="product-icon">🔬</div>
+                    <h3>เครื่องมือวิเคราะห์</h3>
+                    <p>เครื่องมือวิเคราะห์ทางเคมี ฟิสิกส์ และชีววิทยา ที่มีความแม่นยำสูง เหมาะสำหรับงานวิจัยและการควบคุมคุณภาพ</p>
+                </div>
+                <div class="product-card floating" style="animation-delay: 0.2s;">
+                    <div class="product-icon">⚗️</div>
+                    <h3>อุปกรณ์ห้องปฏิบัติการ</h3>
+                    <p>อุปกรณ์และเครื่องมือสำหรับห้องปฏิบัติการ ตั้งแต่เครื่องแก้วพื้นฐานไปจนถึงเครื่องมือที่ซับซ้อน</p>
+                </div>
+                <div class="product-card floating" style="animation-delay: 0.4s;">
+                    <div class="product-icon">🧪</div>
+                    <h3>สารเคมีและรีเอเจนต์</h3>
+                    <p>สารเคมีคุณภาพสูงและรีเอเจนต์สำหรับการทดลองและการวิเคราะห์ต่างๆ พร้อมใบรับรองคุณภาพ</p>
+                </div>
+                <div class="product-card floating" style="animation-delay: 0.6s;">
+                    <div class="product-icon">🔧</div>
+                    <h3>บริการหลังการขาย</h3>
+                    <p>บริการซ่อมบำรุง สอบเทียบเครื่องมือ และฝึกอบรมการใช้งาน โดยทีมผู้เชี่ยวชาญ</p>
+                </div>
+                <div class="product-card floating" style="animation-delay: 0.8s;">
+                    <div class="product-icon">📊</div>
+                    <h3>ระบบการจัดการข้อมูล</h3>
+                    <p>ซอฟต์แวร์และระบบการจัดการข้อมูลสำหรับห้องปฏิบัติการ เพื่อการทำงานที่มีประสิทธิภาพ</p>
+                </div>
+                <div class="product-card floating" style="animation-delay: 1s;">
+                    <div class="product-icon">🎯</div>
+                    <h3>ปรึกษาและออกแบบ</h3>
+                    <p>บริการปรึกษาการออกแบบห้องปฏิบัติการและเลือกเครื่องมือที่เหมาะสมตามความต้องการ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>เกี่ยวกับเรา</h2>
+                    <p>SENSORRIUM CO., LTD. เป็นบริษัทผู้จำหน่ายเครื่องมือและอุปกรณ์วิทยาศาสตร์ที่มีประสบการณ์มายาวนาน เรานำเข้าและจำหน่ายผลิตภัณฑ์คุณภาพสูงจากแบรนด์ชั้นนำระดับโลก</p>
+                    <p>เราให้ความสำคัญกับการบริการลูกค้าเป็นหลัก ด้วยทีมงานที่มีความเชี่ยวชาญและประสบการณ์ในสาขาต่างๆ พร้อมให้คำปรึกษาและสนับสนุนลูกค้าในทุกขั้นตอน</p>
+                    <p>พันธกิจของเราคือการมอบโซลูชั่นที่ครบครันสำหรับความต้องการด้านวิทยาศาสตร์และเทคโนโลยี เพื่อสนับสนุนการพัฒนาและความก้าวหน้าของประเทศไทย</p>
+                </div>
+                <div class="about-image">
+                    <span>🏢</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div>
+                    <h2>ติดต่อเรา</h2>
+                    <p>ติดต่อเราเพื่อขอข้อมูลเพิ่มเติมหรือปรึกษาเกี่ยวกับสินค้าและบริการ</p>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <span>กรุงเทพมหานคร ประเทศไทย</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📞</i>
+                        <span>02-XXX-XXXX</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <span>info@sensorrium.co.th</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>🌐</i>
+                        <span>www.sensorrium.co.th</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>🕒</i>
+                        <span>จันทร์-ศุกร์ 8:30-17:30 น.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2025 SENSORRIUM CO., LTD. All rights reserved.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="LINE">💬</a>
+                    <a href="#" title="Email">📧</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(74, 14, 78, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #4a0e4e 0%, #6b2c70 50%, #8e44ad 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.product-card, .fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        // Add hover effects to product cards
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
